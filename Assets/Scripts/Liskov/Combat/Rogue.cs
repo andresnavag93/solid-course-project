@@ -1,36 +1,35 @@
 
 using UnityEngine;
 
-namespace Combat
+
+public class Rogue : AbstractHero
 {
-    public class Rogue : Hero
+    private void DoMeleeAttack(IDamageReceiver opponent)
     {
-        private void DoMeleeAttack(IDoDamage opponent)
-        {
-            opponent.AddDamage(10);
-        }
+        opponent.AddDamage(10);
+    }
 
-        private void DoRangeAttack(IDoDamage opponent)
-        {
-            opponent.AddDamage(10);
-        }
+    private void DoRangeAttack(IDamageReceiver opponent)
+    {
+        opponent.AddDamage(10);
+    }
 
-        public override void AddDamage(int damage)
-        {
-
-        }
-
-        public override void DoAttack(IDoDamage opponent)
-        {
-            if (Random.Range(1, 100) > 50)
-            {
-                DoMeleeAttack(opponent);
-            }
-            else
-            {
-                DoRangeAttack(opponent);
-            }
-        }
+    public override void AddDamage(int damage)
+    {
 
     }
+
+    public override void DoAttack(IDamageReceiver opponent)
+    {
+        if (Random.Range(1, 100) > 50)
+        {
+            DoMeleeAttack(opponent);
+        }
+        else
+        {
+            DoRangeAttack(opponent);
+        }
+    }
+
 }
+

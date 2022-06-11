@@ -1,20 +1,19 @@
-namespace Combat
+
+public class Archer : AbstractHero
 {
-    public class Archer : Hero
+
+    private void DoRangeAttack(IDamageReceiver opponent)
     {
+        opponent.AddDamage(10);
 
-        private void DoRangeAttack(IDoDamage opponent)
-        {
-            opponent.AddDamage(10);
+    }
+    public override void AddDamage(int damage)
+    {
+    }
 
-        }
-        public override void AddDamage(int damage)
-        {
-        }
-
-        public override void DoAttack(IDoDamage opponent)
-        {
-            DoRangeAttack(opponent);
-        }
+    public override void DoAttack(IDamageReceiver opponent)
+    {
+        DoRangeAttack(opponent);
     }
 }
+

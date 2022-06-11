@@ -1,6 +1,6 @@
 using System.IO;
 
-public class FilePersistence : ILoad, ISave
+public class FilePersistence : ILoader, ISaver
 {
     private const string Path = "Assets/Resources/savedFile.txt";
 

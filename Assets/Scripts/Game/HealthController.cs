@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour, IDoDamage, IHeal
+public class HealthController : MonoBehaviour, IDamageReceiver, IHealReceiver
 {
 
     [SerializeField] private Animator _animator;
@@ -34,7 +34,7 @@ public class HealthController : MonoBehaviour, IDoDamage, IHeal
         {
             /* Is not a good idea to use singletons patter to do that because this makes it difficult to test,
              but for the purpose of this course will be enough. In future courses we will see how to improve it using MVVM pattern */
-            GameManager.Instance.OnPlayerDeath();
+            GameEventListener.Instance.OnPlayerDeath();
             _animator.SetBool("IsDeath", true);
         }
     }

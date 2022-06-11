@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
 /* Set permanent speed power up */
-public class SpeedItem : Item
+public class SpeedItem : AbstractItem
 {
     [SerializeField] private float _speed;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected override void OnCollisionEnter2D(Collision2D other)
     {
         var player = other.collider.GetComponent<MovementController>();
         if (player)

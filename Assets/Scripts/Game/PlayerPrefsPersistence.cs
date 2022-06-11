@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPrefsPersistence : ILoad, ISave
+public class PlayerPrefsPersistence : ILoader, ISaver
 {
     private const string DurationKey = "duration";
 

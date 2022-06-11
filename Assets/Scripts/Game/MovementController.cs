@@ -12,17 +12,17 @@ public class MovementController : MonoBehaviour
 
     private bool _isDrunk;
 
-    private IMovement _regularMovement;
-    private IMovement _drunkMovement;
+    private IMovable _regularMovement;
+    private IMovable _drunkMovement;
 
-    private IMovement _currentMovement;
+    private IMovable _currentMovement;
 
     private void Awake()
     {
         Reset();
     }
 
-    public void Configure(IMovement regularMovement, IMovement drunkMovement)
+    public void Configure(IMovable regularMovement, IMovable drunkMovement)
     {
         _regularMovement = regularMovement;
         _regularMovement.Configure(_animator, _spriteRenderer, transform);

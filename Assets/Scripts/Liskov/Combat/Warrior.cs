@@ -1,21 +1,20 @@
-namespace Combat
+
+public class Warrior : AbstractHero
 {
-    public class Warrior : Hero
+    private void DoMeleeAttack(IDamageReceiver opponent)
     {
-        private void DoMeleeAttack(IDoDamage opponent)
-        {
-            opponent.AddDamage(10);
-        }
+        opponent.AddDamage(10);
+    }
 
-        public override void AddDamage(int damage)
-        {
-
-        }
-
-        public override void DoAttack(IDoDamage opponent)
-        {
-            DoMeleeAttack(opponent);
-        }
+    public override void AddDamage(int damage)
+    {
 
     }
+
+    public override void DoAttack(IDamageReceiver opponent)
+    {
+        DoMeleeAttack(opponent);
+    }
+
 }
+
