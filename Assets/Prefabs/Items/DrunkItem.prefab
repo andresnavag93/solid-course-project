@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7619332981938175870}
   - component: {fileID: -4498752232445664850}
   - component: {fileID: -7529412672203603314}
-  - component: {fileID: -1000669163521274453}
+  - component: {fileID: 928904153036881118}
   m_Layer: 0
-  m_Name: SpeedItem
+  m_Name: DrunkItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 72404930b2c834bd4953e108aeaff31a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 271b146fc9f714950acb028365077951, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.84166664, y: 0.43333334}
+    oldSize: {x: 0.485, y: 0.45}
     newSize: {x: 3.06, y: 2.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-1000669163521274453
+--- !u!114 &928904153036881118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7619332981938175871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0de1b0d19bed40bba7a9c22cdce3b9e, type: 3}
+  m_Script: {fileID: 11500000, guid: b9699c9eb4eecd44cbbb68538ece6e45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: Speed
-  _speed: 3
+  id: Drunk

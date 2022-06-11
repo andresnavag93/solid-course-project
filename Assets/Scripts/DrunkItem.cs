@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-/* Set permanent speed power up */
-public class SpeedItem : Item
+public class DrunkItem : Item
 {
-    [SerializeField] private float _speed;
+
+    [SerializeField] private float _duration = 2f;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         var player = other.collider.GetComponent<MovementController>();
         if (player)
         {
-            player.SetSpeed(_speed);
+            player.SetDrunk(_duration);
             Destroy(gameObject);
         }
 

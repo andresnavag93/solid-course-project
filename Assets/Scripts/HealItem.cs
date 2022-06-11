@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-
-public class HealItem : MonoBehaviour
+public class HealItem : Item
 {
-    private ItemsManager.ItemTypes type = ItemsManager.ItemTypes.Heal;
     [SerializeField] private int _heal;
 
     private void OnCollisionEnter2D(Collision2D other)

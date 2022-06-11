@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using System.Collections;
 
 public class MovementController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class MovementController : MonoBehaviour
     [SerializeField] private float _speed = 1;
 
     private float _currentSpeed;
+
+    private bool _isDrunk;
 
     private void Awake()
     {
@@ -22,6 +25,11 @@ public class MovementController : MonoBehaviour
         _spriteRenderer.flipX = horizontal < 0;
         var x = horizontal * _currentSpeed * Time.deltaTime;
 
+        if (_isDrunk)
+        {
+            x *= -1;
+        }
+
         // Move according the input
         transform.Translate(x, 0.0f, 0.0f);
     }
@@ -35,5 +43,18 @@ public class MovementController : MonoBehaviour
     public void SetSpeed(float speed)
     {
         _currentSpeed = speed;
+    }
+
+    public void SetDrunk(float duration)
+    {
+        _isDrunk = true;
+        StartCoroutine(DisableDrunk(duration));
+    }
+
+    private IEnumerator DisableDrunk(float time)
+    {
+
+        yield return new WaitForSeconds(time);
+        _isDrunk = false;
     }
 }

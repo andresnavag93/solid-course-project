@@ -4327,6 +4327,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _itemsIds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _itemsIds.Array.data[0]
+      value: Heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _itemsIds.Array.data[1]
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _itemsIds.Array.data[2]
+      value: Drunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _prefabItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _prefabItems.Array.data[0]
+      value: 
+      objectReference: {fileID: -2539955965433020663, guid: 9eced8befe9cf46ef9c6f5838781bf00, type: 3}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _prefabItems.Array.data[1]
+      value: 
+      objectReference: {fileID: -1000669163521274453, guid: 044f4a3c0bec241c3aab97fba9f552c1, type: 3}
+    - target: {fileID: 5086992929465515043, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
+      propertyPath: _prefabItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 928904153036881118, guid: 5876025cc4b371d41bbdb9c68332becf, type: 3}
     - target: {fileID: 5667039985035002757, guid: 0c98f1be1c0a9442b87a0cda76871bce, type: 3}
       propertyPath: m_Name
       value: ItemsManager
