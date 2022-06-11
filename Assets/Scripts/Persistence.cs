@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Persistence
+public class Persistence : ILoad, ISave
 {
     private const string DurationKey = "duration";
     public float LoadLastDuration()

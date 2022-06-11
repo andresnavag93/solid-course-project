@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
 
     private float _startTime;
 
+    private ISave _save;
+
     private void Awake()
     {
+        _save = new Persistence();
         Instance = this;
     }
 
@@ -23,8 +26,7 @@ public class GameManager : MonoBehaviour
         _itemsManager.DestroyItems();
         var duration = Time.time - _startTime;
         // Save the last duration
-        var persistent = new Persistence();
-        persistent.SaveLastDuration(duration);
+        _save.SaveLastDuration(duration);
         _menu.ShowGameOver();
     }
 

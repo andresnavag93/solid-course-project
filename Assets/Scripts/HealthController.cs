@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController : MonoBehaviour, IDoDamage, IHeal
 {
 
     [SerializeField] private Animator _animator;
