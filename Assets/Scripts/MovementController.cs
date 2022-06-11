@@ -12,30 +12,32 @@ public class MovementController : MonoBehaviour
 
     private bool _isDrunk;
 
+    private IMovement _regularMovement;
+    private IMovement _drunkMovement;
+
+    private IMovement _currentMovement;
+
     private void Awake()
     {
         Reset();
     }
 
+    public void Configure(IMovement regularMovement, IMovement drunkMovement)
+    {
+        _regularMovement = regularMovement;
+        _regularMovement.Configure(_animator, _spriteRenderer, transform);
+        _drunkMovement = drunkMovement;
+        _drunkMovement.Configure(_animator, _spriteRenderer, transform);
+    }
+
     private void FixedUpdate()
     {
-        // Check input
-        var horizontal = Input.GetAxis("Horizontal");
-        _animator.SetFloat("Horizontal", math.abs(horizontal));
-        _spriteRenderer.flipX = horizontal < 0;
-        var x = horizontal * _currentSpeed * Time.deltaTime;
-
-        if (_isDrunk)
-        {
-            x *= -1;
-        }
-
-        // Move according the input
-        transform.Translate(x, 0.0f, 0.0f);
+        _currentMovement.DoMove(_currentSpeed);
     }
 
     public void Reset()
     {
+        _currentMovement = _regularMovement;
         _currentSpeed = _speed;
         _animator.SetBool("IsDeath", false);
     }
@@ -47,7 +49,7 @@ public class MovementController : MonoBehaviour
 
     public void SetDrunk(float duration)
     {
-        _isDrunk = true;
+        _currentMovement = _drunkMovement;
         StartCoroutine(DisableDrunk(duration));
     }
 
@@ -55,6 +57,6 @@ public class MovementController : MonoBehaviour
     {
 
         yield return new WaitForSeconds(time);
-        _isDrunk = false;
+        _currentMovement = _regularMovement;
     }
 }
