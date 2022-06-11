@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-
 /* Start game menu */
 public class Menu : MonoBehaviour
 {
@@ -15,8 +14,9 @@ public class Menu : MonoBehaviour
 
     private void OnEnable()
     {
+        var persistent = new Persistence();
         // Get the last time and format it
-        var time = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("duration"));
+        var time = TimeSpan.FromSeconds(persistent.LoadLastDuration());
         _lastDuration.text = time.ToString(@"mm\:ss");
     }
 

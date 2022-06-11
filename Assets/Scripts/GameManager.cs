@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
         _itemsManager.DestroyItems();
         var duration = Time.time - _startTime;
         // Save the last duration
-        PlayerPrefs.SetFloat("duration", duration);
-        PlayerPrefs.Save();
+        var persistent = new Persistence();
+        persistent.SaveLastDuration(duration);
         _menu.ShowGameOver();
     }
 
