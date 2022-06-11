@@ -10,7 +10,7 @@ public class GameEventListener : MonoBehaviour
     [SerializeField] private ItemsSpawner _itemSpawner;
     [SerializeField] private Player _player;
 
-    private float _startTime;
+    private float _gameStartTime;
 
     private ISaver _save;
 
@@ -28,16 +28,16 @@ public class GameEventListener : MonoBehaviour
     {
         _obstacleSpawner.DestroyProjectiles();
         _itemSpawner.DestroyItems();
-        var duration = Time.time - _startTime;
+        var gameDuration = Time.time - _gameStartTime;
         // Save the last duration
-        _save.SaveLastDuration(duration);
+        _save.SaveData(gameDuration);
         _menu.ShowGameOver();
     }
 
     public void OnStartGame()
     {
         // Start timer
-        _startTime = Time.time;
+        _gameStartTime = Time.time;
         // Start the logic of the managers and reset the player
         _obstacleSpawner.StartSpawning();
         _itemSpawner.StartSpawning();

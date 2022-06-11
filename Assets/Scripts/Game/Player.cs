@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _movementController.Configure(new RegularMovable(), new DrunkMovable());
+        Reset();
     }
     public void Reset()
     {

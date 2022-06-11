@@ -22,7 +22,7 @@ public class HealthController : MonoBehaviour, IDamageReceiver, IHealReceiver
         _animator.SetBool("IsDeath", false);
     }
 
-    public void AddDamage(int damage)
+    public void ReceiveDamage(int damage)
     {
         // Update current health with the damage
         _currentHealth -= damage;
@@ -39,10 +39,10 @@ public class HealthController : MonoBehaviour, IDamageReceiver, IHealReceiver
         }
     }
 
-    public void Heal(int heal)
+    public void Heal(int quantityToHeal)
     {
         // Check that the health is in the limits
-        _currentHealth = math.min(_currentHealth + heal, _initialHealth);
+        _currentHealth = math.min(_currentHealth + quantityToHeal, _initialHealth);
         _playerHud.SetHealth(_currentHealth.ToString());
     }
 }

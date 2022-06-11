@@ -4,10 +4,10 @@ public class Archer : AbstractHero
 
     private void DoRangeAttack(IDamageReceiver opponent)
     {
-        opponent.AddDamage(10);
+        opponent.ReceiveDamage(10);
 
     }
-    public override void AddDamage(int damage)
+    public override void ReceiveDamage(int damage)
     {
     }
 

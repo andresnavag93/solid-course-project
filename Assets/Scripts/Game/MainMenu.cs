@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button _startButton;
-    [SerializeField] private Text _lastDuration;
+    [SerializeField] private Text _lastGameDurationText;
 
     private ILoader _load;
     private void Awake()
@@ -21,8 +21,8 @@ public class MainMenu : MonoBehaviour
     private void OnEnable()
     {
         // Get the last time and format it
-        var time = TimeSpan.FromSeconds(_load.LoadLastDuration());
-        _lastDuration.text = time.ToString(@"mm\:ss");
+        var time = TimeSpan.FromSeconds(_load.LoadData());
+        _lastGameDurationText.text = time.ToString(@"mm\:ss");
     }
 
     private void OnStartButtonPressed()

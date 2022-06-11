@@ -4,12 +4,12 @@ public class PlayerPrefsPersistence : ILoader, ISaver
 {
     private const string DurationKey = "duration";
 
-    public float LoadLastDuration()
+    public float LoadData()
     {
         return PlayerPrefs.GetFloat(DurationKey, 0);
     }
 
-    public void SaveLastDuration(float duration)
+    public void SaveData(float duration)
     {
         PlayerPrefs.SetFloat(DurationKey, duration);
         PlayerPrefs.Save();

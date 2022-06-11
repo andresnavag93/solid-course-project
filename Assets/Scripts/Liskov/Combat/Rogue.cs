@@ -6,15 +6,15 @@ public class Rogue : AbstractHero
 {
     private void DoMeleeAttack(IDamageReceiver opponent)
     {
-        opponent.AddDamage(10);
+        opponent.ReceiveDamage(10);
     }
 
     private void DoRangeAttack(IDamageReceiver opponent)
     {
-        opponent.AddDamage(10);
+        opponent.ReceiveDamage(10);
     }
 
-    public override void AddDamage(int damage)
+    public override void ReceiveDamage(int damage)
     {
 
     }

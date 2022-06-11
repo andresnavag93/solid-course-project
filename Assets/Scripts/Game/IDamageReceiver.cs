@@ -1,4 +1,4 @@
 public interface IDamageReceiver
 {
-    void AddDamage(int damage);
+    void ReceiveDamage(int quantity);
 }

@@ -6,57 +6,56 @@ public class MovementController : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private float _speed = 1;
+    [SerializeField] private float _initialSpeed = 1;
 
     private float _currentSpeed;
 
     private bool _isDrunk;
 
-    private IMovable _regularMovement;
-    private IMovable _drunkMovement;
-
-    private IMovable _currentMovement;
+    private IMovable _regularMovable;
+    private IMovable _drunkMovable;
+    private IMovable _currentMovable;
 
     private void Awake()
     {
         Reset();
     }
 
-    public void Configure(IMovable regularMovement, IMovable drunkMovement)
+    public void Configure(IMovable regularMovable, IMovable drunkMovable)
     {
-        _regularMovement = regularMovement;
-        _regularMovement.Configure(_animator, _spriteRenderer, transform);
-        _drunkMovement = drunkMovement;
-        _drunkMovement.Configure(_animator, _spriteRenderer, transform);
+        _regularMovable = regularMovable;
+        _regularMovable.Configure(_animator, _spriteRenderer, transform);
+        _drunkMovable = drunkMovable;
+        _drunkMovable.Configure(_animator, _spriteRenderer, transform);
     }
 
     private void FixedUpdate()
     {
-        _currentMovement.DoMove(_currentSpeed);
+        _currentMovable.DoMove(_currentSpeed);
     }
 
     public void Reset()
     {
-        _currentMovement = _regularMovement;
-        _currentSpeed = _speed;
+        _currentMovable = _regularMovable;
+        _currentSpeed = _initialSpeed;
         _animator.SetBool("IsDeath", false);
     }
 
-    public void SetSpeed(float speed)
+    public void SetSpeed(float newSpeed)
     {
-        _currentSpeed = speed;
+        _currentSpeed = newSpeed;
     }
 
-    public void SetDrunk(float duration)
+    public void SetDrunk(float drunkDuration)
     {
-        _currentMovement = _drunkMovement;
-        StartCoroutine(DisableDrunk(duration));
+        _currentMovable = _drunkMovable;
+        StartCoroutine(DisableDrunk(drunkDuration));
     }
 
-    private IEnumerator DisableDrunk(float time)
+    private IEnumerator DisableDrunk(float drunkDuration)
     {
 
-        yield return new WaitForSeconds(time);
-        _currentMovement = _regularMovement;
+        yield return new WaitForSeconds(drunkDuration);
+        _currentMovable = _regularMovable;
     }
 }

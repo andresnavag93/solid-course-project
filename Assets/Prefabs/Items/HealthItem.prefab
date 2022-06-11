@@ -147,4 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Heal
-  _heal: 10
+  _healQuantity: 10

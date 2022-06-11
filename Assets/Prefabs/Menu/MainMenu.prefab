@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startButton: {fileID: 5190392335815975447}
-  _lastDuration: {fileID: 7679529206845701365}
+  _lastGameDurationText: {fileID: 7679529206845701365}
 --- !u!1 &4511194164513372320
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
 public interface ILoader
 {
-    float LoadLastDuration();
+    float LoadData();
 }

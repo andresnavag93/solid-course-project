@@ -4,7 +4,7 @@ public class FilePersistence : ILoader, ISaver
 {
     private const string Path = "Assets/Resources/savedFile.txt";
 
-    public float LoadLastDuration()
+    public float LoadData()
     {
         var reader = new StreamReader(Path);
         var durationString = (reader.ReadToEnd());
@@ -17,7 +17,7 @@ public class FilePersistence : ILoader, ISaver
         return 0;
     }
 
-    public void SaveLastDuration(float duration)
+    public void SaveData(float duration)
     {
         var writer = new StreamWriter(Path, true);
         writer.WriteLine(duration);

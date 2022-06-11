@@ -13,17 +13,17 @@ public class GameInstaller : MonoBehaviour
 
     private ILoader GetLoadPersistence()
     {
-        // #if UNITY_EDITOR
+#if UNITY_EDITOR
         return new FilePersistence();
-        // #endif
+#endif
         return new PlayerPrefsPersistence();
     }
 
     private ISaver GetSavePersistence()
     {
-        // #if UNITY_EDITOR
+#if UNITY_EDITOR
         return new FilePersistence();
-        // #endif
+#endif
         return new PlayerPrefsPersistence();
     }
 }
