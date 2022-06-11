@@ -10,8 +10,12 @@ public class Menu : MonoBehaviour
     private ILoad _load;
     private void Awake()
     {
-        _load = new Persistence();
         _startButton.onClick.AddListener(OnStartButtonPressed);
+    }
+
+    public void Configure(ILoad load)
+    {
+        _load = load;
     }
 
     private void OnEnable()

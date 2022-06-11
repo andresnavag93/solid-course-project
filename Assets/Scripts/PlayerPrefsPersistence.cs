@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class Persistence : ILoad, ISave
+public class PlayerPrefsPersistence : ILoad, ISave
 {
     private const string DurationKey = "duration";
+
     public float LoadLastDuration()
     {
         return PlayerPrefs.GetFloat(DurationKey, 0);

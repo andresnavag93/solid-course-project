@@ -16,8 +16,12 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        _save = new Persistence();
         Instance = this;
+    }
+
+    public void Configure(ISave save)
+    {
+        _save = save;
     }
 
     public void OnPlayerDeath()
