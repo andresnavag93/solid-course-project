@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-/* Start game menu */
+
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button _startButton;
@@ -20,9 +20,19 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        // Get the last time and format it
-        var time = TimeSpan.FromSeconds(_load.LoadData());
-        _lastGameDurationText.text = time.ToString(@"mm\:ss");
+        LoadLastDuration();
+    }
+
+    private void LoadLastDuration()
+    {
+        var gameDuration = _load.LoadData();
+        var time = TimeSpan.FromSeconds(gameDuration);
+        _lastGameDurationText.text = FormatTimer(time);
+    }
+
+    private static string FormatTimer(TimeSpan time)
+    {
+        return time.ToString(@"mm\:ss");
     }
 
     private void OnStartButtonPressed()

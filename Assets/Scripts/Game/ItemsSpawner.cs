@@ -6,14 +6,11 @@ using Random = UnityEngine.Random;
 public class ItemsSpawner : MonoBehaviour
 {
     [SerializeField] private string[] _itemsIds;
-
     [SerializeField] private AbstractItem[] _prefabItems;
     private Dictionary<string, AbstractItem> _idToItemPrefabs;
-
     [SerializeField] private GameObject[] _spawnPoints;
     [SerializeField] private float _minSpawnInterval = 2;
     [SerializeField] private float _maxSpawnInterval = 4;
-
     private List<GameObject> _spawnedItems = new List<GameObject>();
     private bool _isSpawnAvailable;
     private float _timeToNextSpawn;
@@ -37,28 +34,38 @@ public class ItemsSpawner : MonoBehaviour
         if (_isSpawnAvailable)
         {
             _timeToNextSpawn -= Time.deltaTime;
-            if (_timeToNextSpawn < 0)
+            if (IsTimeToSpawn())
             {
                 CalculateTimeToNextSpawn();
-                // Get random item to spawn
-                SpawnItem(_itemsIds[Random.Range(0, _itemsIds.Length)]);
+                SpawnRandomItem(_itemsIds[Random.Range(0, _itemsIds.Length)]);
             }
         }
     }
+
+    private bool IsTimeToSpawn()
+    {
+        return _timeToNextSpawn < 0;
+    }
+
     private void CalculateTimeToNextSpawn()
     {
         _timeToNextSpawn = Random.Range(_minSpawnInterval, _maxSpawnInterval);
     }
 
-    private void SpawnItem(string id)
+    private void SpawnRandomItem(string id)
     {
-        // Spawn the items in random position
         AbstractItem itemToInstantiate;
         if (!_idToItemPrefabs.TryGetValue(id, out itemToInstantiate))
         {
             throw new ArgumentOutOfRangeException();
         }
-        _spawnedItems.Add(Instantiate(itemToInstantiate,
+        SpawnItemInRandomPosition(itemToInstantiate);
+    }
+
+    private void SpawnItemInRandomPosition(AbstractItem itemToInstantiate)
+    {
+        _spawnedItems.Add(Instantiate(
+            itemToInstantiate,
             _spawnPoints[Random.Range(0, _spawnPoints.Length - 1)].transform.position,
             Quaternion.identity).gameObject);
     }

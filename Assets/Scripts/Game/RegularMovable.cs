@@ -11,11 +11,20 @@ public class RegularMovable : IMovable
     public void DoMove(float speed)
     {
         var horizontal = Input.GetAxis("Horizontal");
+        SetAnimantio(horizontal);
+        MovePlayer(speed, horizontal);
+    }
+
+    private void MovePlayer(float speed, float horizontal)
+    {
+        var x = horizontal * speed * Time.deltaTime;
+        _transform.Translate(x, 0.0f, 0.0f);
+    }
+
+    private void SetAnimantio(float horizontal)
+    {
         _animator.SetFloat("Horizontal", math.abs(horizontal));
         _spriteRenderer.flipX = horizontal < 0;
-        var x = horizontal * speed * Time.deltaTime;
-        // Move according the input
-        _transform.Translate(x, 0.0f, 0.0f);
     }
 
     public void Configure(Animator animator, SpriteRenderer spriteRenderer, Transform transform)

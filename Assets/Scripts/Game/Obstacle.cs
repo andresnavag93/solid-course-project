@@ -12,17 +12,19 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var doDamageComponent = other.collider.GetComponent<IDamageReceiver>();
-        if (doDamageComponent != null)
+        var player = other.collider.GetComponent<IDamageReceiver>();
+        if (!IsPlayer(player))
         {
-            // Add damage and destroy the object
-            doDamageComponent.ReceiveDamage(_damageWillCause);
             Destroy(gameObject);
+            return;
         }
-        else
-        {
-            // only destroy the object, is not a player
-            Destroy(gameObject);
-        }
+
+        player.ReceiveDamage(_damageWillCause);
+        Destroy(gameObject);
+    }
+
+    private static bool IsPlayer(IDamageReceiver player)
+    {
+        return player != null;
     }
 }

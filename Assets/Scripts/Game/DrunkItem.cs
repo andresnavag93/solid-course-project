@@ -10,11 +10,21 @@ public class DrunkItem : AbstractItem
     protected override void OnCollisionEnter2D(Collision2D other)
     {
         var player = other.collider.GetComponent<MovementController>();
-        if (player)
+        if (IsPlayer(player))
         {
-            player.SetDrunk(_duration);
-            Destroy(gameObject);
+            ApplyDrunk(player);
         }
 
+    }
+
+    private void ApplyDrunk(MovementController player)
+    {
+        player.SetDrunk(_duration);
+        Destroy(gameObject);
+    }
+
+    private bool IsPlayer(MovementController player)
+    {
+        return player != null;
     }
 }

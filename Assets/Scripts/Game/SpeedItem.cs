@@ -8,11 +8,20 @@ public class SpeedItem : AbstractItem
     protected override void OnCollisionEnter2D(Collision2D other)
     {
         var player = other.collider.GetComponent<MovementController>();
-        if (player)
+        if (IsPlayer(player))
         {
-            player.SetSpeed(_speedToAssign);
-            Destroy(gameObject);
+            ApplySpeed(player);
         }
+    }
 
+    private void ApplySpeed(MovementController player)
+    {
+        player.SetSpeed(_speedToAssign);
+        Destroy(gameObject);
+    }
+
+    private bool IsPlayer(MovementController player)
+    {
+        return player != null;
     }
 }

@@ -26,21 +26,42 @@ public class GameEventListener : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        CleanPendingElements();
+        SaveLastDuration();
+        ShowGameOver();
+    }
+    private void CleanPendingElements()
+    {
         _obstacleSpawner.DestroyProjectiles();
         _itemSpawner.DestroyItems();
+    }
+
+    private void SaveLastDuration()
+    {
         var gameDuration = Time.time - _gameStartTime;
-        // Save the last duration
         _save.SaveData(gameDuration);
+    }
+
+    private void ShowGameOver()
+    {
         _menu.ShowGameOver();
     }
 
     public void OnStartGame()
     {
-        // Start timer
-        _gameStartTime = Time.time;
-        // Start the logic of the managers and reset the player
+        StartTimer();
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         _obstacleSpawner.StartSpawning();
         _itemSpawner.StartSpawning();
         _player.Reset();
+    }
+
+    private void StartTimer()
+    {
+        _gameStartTime = Time.time;
     }
 }

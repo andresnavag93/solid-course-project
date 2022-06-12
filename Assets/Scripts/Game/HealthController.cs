@@ -22,26 +22,41 @@ public class HealthController : MonoBehaviour, IDamageReceiver, IHealReceiver
         _animator.SetBool("IsDeath", false);
     }
 
-    public void ReceiveDamage(int damage)
+    public void ReceiveDamage(int quantity)
     {
-        // Update current health with the damage
-        _currentHealth -= damage;
-        // Update hud
-        _playerHud.SetHealth(_currentHealth.ToString());
-
-        // if is death then Game Over
-        if (_currentHealth <= 0)
+        UpdateHealth(quantity);
+        UpdateHUD();
+        if (PlayerIsDead())
         {
-            /* Is not a good idea to use singletons patter to do that because this makes it difficult to test,
-             but for the purpose of this course will be enough. In future courses we will see how to improve it using MVVM pattern */
-            GameEventListener.Instance.OnPlayerDeath();
-            _animator.SetBool("IsDeath", true);
+            SetGameOver();
         }
+    }
+
+    private void SetGameOver()
+    {
+        /* Is not a good idea to use singletons patter to do that because this makes it difficult to test,
+             but for the purpose of this course will be enough. In future courses we will see how to improve it using MVVM pattern */
+        GameEventListener.Instance.OnPlayerDeath();
+        _animator.SetBool("IsDeath", true);
+    }
+
+    private bool PlayerIsDead()
+    {
+        return _currentHealth <= 0;
+    }
+
+    private void UpdateHUD()
+    {
+        _playerHud.SetHealth(_currentHealth.ToString());
+    }
+
+    private void UpdateHealth(int quantity)
+    {
+        _currentHealth -= quantity;
     }
 
     public void Heal(int quantityToHeal)
     {
-        // Check that the health is in the limits
         _currentHealth = math.min(_currentHealth + quantityToHeal, _initialHealth);
         _playerHud.SetHealth(_currentHealth.ToString());
     }
